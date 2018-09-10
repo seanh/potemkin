@@ -1,0 +1,11 @@
+{# The actual LTI launch form that lives inside the <iframe>. #}
+{% extends "../base.html.jinja2" %}
+
+{% block content %}
+  <form id="form" method="post"></form>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="{{ request.static_url('potemkin:static/launch_form.js') }}"></script>
+{% endblock scripts %}

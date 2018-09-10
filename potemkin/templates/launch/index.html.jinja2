@@ -1,0 +1,67 @@
+{# The main page where you construct and execute LTI launches. -#}
+{% extends "../base.html.jinja2" %}
+
+{% macro launch_button() %}
+  <div class="form-group launch-button" style="text-align: center; padding-top: 3em;">
+    <button class="btn btn-primary" id="launchButton" type="submit">Launch</button>
+    <h1 style="display:inline; vertical-align:middle;">🚀</h1>
+  </div>
+{% endmacro %}
+
+{% block content %}
+  {{ super() }}
+
+  <p>Specify all the details of the LTI app that you want to launch and the
+  launch parameters you want to send by filling out the form on the left, then
+  click <kbd>Launch</kbd> to launch the app in the
+  <code>&lt;iframe&gt</code> on the right.</p>
+
+  <p>You can then edit the form and click <kbd>Launch</kbd> to try another
+  launch, you don't have to reload this page.</p>
+
+  <p>You can enter whatever you want into this form to test the app under all
+  sorts of launch conditions. You can even submit invalid or missing parameters
+  to see how the app handles errors.</p>
+
+  <p>Some handy references:</p>
+  <ul class="list list-inline">
+    <li class="list-inline-item">
+      <a href="https://www.imsglobal.org/specs/ltiv1p1/implementation-guide">
+        The LTI v1.1 spec
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a href="https://www.eduappcenter.com/docs/basics/post_parameters">
+        Edu App Center launch params page
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a href="https://www.imsglobal.org/toolcompare.html">
+        Table of params supported by major LMS's
+      </a>
+    </li>
+  </ul>
+
+  <div class="row">
+    {# Left column -#}
+    <div class="col">
+      {% include "_includes/builder_form.html.jinja2" %}
+    </div>
+
+    {# Right column -#}
+    <div class="col">
+      {{ launch_button() }}
+      <code>&lt;iframe&gt</code>
+      <iframe id="iframe"
+              class="iframe"
+              src="{{ request.route_url("launch_form") }}">
+      </iframe>
+      <code style="float:right;">&lt;/iframe&gt</code>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="{{ request.static_url('potemkin:static/builder_form.js') }}"></script>
+{% endblock scripts %}

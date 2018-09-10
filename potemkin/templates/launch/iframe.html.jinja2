@@ -1,0 +1,32 @@
+{# The main template for the /launch page.
+
+This page consists of multiple frames. The top-level frame, which is rendered by this template,
+contains an <iframe>. The contents of the <iframe> are rendered by another template file.
+-#}
+{% extends "../tabs.html.jinja2" %}
+
+{% block content %}
+{{ super() }}
+<p>This is an iframe containing an LTI launch form. Fill out the form, click the
+<kbd>Launch</kbd> button, and the LTI app will be launched inside the iframe.</p>
+
+<p>In a real LMS you wouldn't see this form: it uses a hidden form with values pre-filled from
+the LMS's database and uses JavaScript to immediately submit the form. But otherwise it's
+just the same as what's happening here: submitting a form in an iframe.</p>
+
+<p>You can enter whatever you want into this form to test the app under all
+sorts of launch conditions. You can even submit invalid or missing parameters
+to see how the app handles errors.</p>
+
+<p>References:</p>
+
+<ul>
+  <li><a href="https://www.imsglobal.org/specs/ltiv1p1/implementation-guide">The LTI v1.1 spec</a></li>
+  <li><a href="https://www.eduappcenter.com/docs/basics/post_parameters">Edu App Center's page on LTI launch params</a></li>
+  <li><a href="https://www.imsglobal.org/toolcompare.html">IMS Global's table of what params each major LMS supports</a></li>
+</ul>
+
+<code>&lt;iframe&gt</code>
+<iframe id="iframe" src="{{ request.route_url("launch_form") }}" height="800px" width="100%" style="border:2px dashed #ddd; padding: 2%;"></iframe>
+<code style="float:right;">&lt;/iframe&gt</code>
+{% endblock content %}

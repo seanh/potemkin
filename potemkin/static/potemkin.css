@@ -1,0 +1,16 @@
+/* The main CSS file for the whole app. */
+
+.tabs {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+fieldset {
+  padding: 1em;
+  border: 1px solid #ddd;
+  margin-bottom: 2em;
+}
+
+fieldset legend {
+  width: auto;
+}

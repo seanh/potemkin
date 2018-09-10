@@ -1,0 +1,15 @@
+{% extends "../base.html.jinja2" %}
+
+{% block content %}
+  <form id="launch" action="{{ lti_launch_url }}" method="post" encType="application/x-www-form-urlencoded">
+    {% for name, value in params.items() %}
+      <input name="{{ name }}" value="{{ value }}">
+    {% endfor %}
+  </form>
+
+  <script>
+    window.setInterval(function() {
+      document.getElementById("launch").submit();
+    }, 1000);
+  </script>
+{% endblock %}

@@ -1,0 +1,64 @@
+{# The main template for the /install page. -#}
+{% extends "tabs.html.jinja2" %}
+
+{% block content %}
+{{ super() }}
+
+<p>Before you can launch an LTI app you need to first install the app into an LMS.<br>
+On this page you can install any LTI app into Potemkin, a pretend LMS for testing apps.<br>
+Installation is when you tell the LMS the details of the app so that the LMS knows how to
+launch the app.</p>
+
+<form method="post">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input class="form-control" id="name", name="name" value="Localhost">
+    <small id="nameHelp" class="form-text text-muted">
+      <p>Give this application instance a name so that you can recognise it later.
+      You can type whatever you want here.
+      For example "Production Foobar App" or "Local Foobar App".</p>
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="launchURL">Launch URL: 🚀</label>
+    <input class="form-control" id="launchURL" name="launchURL" value="http://localhost:8001/lti_launches">
+    <small id="launchURLHelp" class="form-text text-muted">
+      <p>The URL that Canvas will submit its LTI launch form posts to, for example
+      <code>https://lms.hypothes.is/lti_launches</code></a>.</p>
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="consumerKey">Consumer Key:</label>
+    <input class="form-control" id="consumerKey", name="consumerKey">
+    <small id="consumerKeyHelp" class="form-text text-muted">
+      <p>A consumer key that you generated on an LTI app's registration page, such as the
+      one at <a href="https://lms.hypothes.is/welcome">lms.hypothes.is/welcome</a>
+      or <a href="http://localhost:8001/welcome">localhost:8001/welcome</a>.</p>
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="sharedSecret">Shared Secret:</label>
+    <input class="form-control" id="sharedSecret" name="sharedSecret">
+    <small id="sharedSecretHelp" class="form-text text-muted">
+      <p>The shared secret that you generated at the same time as you generated the consumer key.</p>
+    </small>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit" id="launch_button">Install LTI App in Potemkin</button>
+  </div>
+
+  {% for message in request.session.pop_flash("install") %}
+    <div class="alert alert-success alert-dismissable fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="alert-heading">Success</h4>
+      <p>{{ message }}</p>
+    </div>
+  {% endfor %}
+</form>
+{% endblock content %}

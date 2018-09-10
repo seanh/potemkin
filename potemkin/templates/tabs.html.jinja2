@@ -1,0 +1,19 @@
+{# The base template for all pages that have the main navigation tabs along the top. -#}
+{% extends "base.html.jinja2" %}
+
+{% block content %}
+<ul class="nav nav-tabs tabs" id="myTab">
+  {{ tab("install") }}
+  {{ tab("launch", "Launch") }}
+</ul>
+{% endblock content %}
+
+
+{% macro tab(name, display_name) -%}
+  <li class="nav-item">
+    <a class="nav-link{% if request.matched_route.name == name %} active{% endif %}"
+       href="{{ request.route_url(name) }}">
+      {{ display_name or name|capitalize }}
+    </a>
+  </li>
+{%- endmacro %}

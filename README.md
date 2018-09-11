@@ -25,7 +25,7 @@ To install and run a development version of Potemkin, so you can hack on
 Potemkin's own code:
 
 ```ShellSession
-$ git clone git@github.com:seanh/potemkin.git
+$ git clone git@github.com:hypothesis/potemkin.git
 $ cd potemkin
 $ make dev
 ```

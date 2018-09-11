@@ -1,7 +1,7 @@
 Potemkin
 ========
 
-A pretend LMS for testing LTI apps in development environments.
+A pretend LMS for testing LTI apps.
 
 You Will Need
 -------------

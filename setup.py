@@ -17,7 +17,7 @@ requires = [
 setup(
     name='potemkin',
     version='0.0',
-    description='A pretend LMS for testing LTI apps in development environments',
+    description='A pretend LMS for testing LTI apps',
     long_description=README,
     classifiers=[
         'Programming Language :: Python',

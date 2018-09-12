@@ -1,7 +1,13 @@
+import time
+
 from pyramid.view import view_config
 import oauthlib.oauth1
 import oauthlib.common
 import webob
+
+
+ONE_YEAR = 60 * 60 * 24 * 365
+"""One year in seconds."""
 
 
 @view_config(
@@ -16,8 +22,13 @@ def launch(request):
     # values for the OAuth 1 nonce and timestamp fields. To do so we need
     # to specify a fake client key and URL.
     # FIXME: There's probably an easier way to do this.
+    #
+    # Use an OAuth 1 timestamp a full year in the future, so that it doesn't
+    # expire while the developer is still trying to use it. (This isn't good
+    # security but that's not a problem for this app.)
+    timestamp = str(int(time.time() + ONE_YEAR))
     oauth_params = dict(
-        oauthlib.oauth1.Client("fake_client_key").get_oauth_params(
+        oauthlib.oauth1.Client("fake_client_key", timestamp=timestamp).get_oauth_params(
             oauthlib.common.Request("https://example.com")
         )
     )

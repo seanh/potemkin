@@ -1,10 +1,10 @@
 .PHONY: dev
 dev:
-	tox -e py36-dev
+	tox -q -e py36-dev
 
 .PHONY: shell
 shell:
-	tox -e py36-shell
+	tox -q -e py36-shell
 
 .PHONY: clean
 clean:

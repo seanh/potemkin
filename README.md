@@ -9,7 +9,7 @@ You Will Need
 * Git
 * Python 3.6
 * Make
-* [Tox](https://tox.readthedocs.io/en/latest/) and [tox-pip-extensions](https://github.com/tox-dev/tox-pip-extensions)
+* [Tox](https://tox.readthedocs.io/en/latest/) 3.8 or newer
 
 Installation & Usage
 --------------------

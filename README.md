@@ -3,38 +3,36 @@ Potemkin
 
 A pretend LMS for testing LTI apps.
 
-You Will Need
--------------
+## You will need
 
-* Git
-* Python 3.6
-* Make
-* [Tox](https://tox.readthedocs.io/en/latest/) 3.8 or newer
+* [Make](https://www.gnu.org/software/make/)
 
-Installation & Usage
---------------------
+* [Git](https://git-scm.com/)
 
-TODO: Instructions for installing and launching from pip, once the app has been
-published to PyPI. For now just follow the **Development Installation**
-instructions below.
+* [pyenv](https://github.com/pyenv/pyenv)
+  Follow the instructions in the pyenv README to install it.
+  The Homebrew method works best on macOS.
 
-Development Installation
-------------------------
+### Clone the Git repo
 
-To install and run a development version of Potemkin, so you can hack on
-Potemkin's own code:
+    git clone https://github.com/hypothesis/potemkin.git
 
-```ShellSession
-$ git clone git@github.com:hypothesis/potemkin.git
-$ cd potemkin
-$ make dev
-```
+This will download the code into a `potemkin` directory in your current working
+directory. You need to be in the `potemkin` directory from the remainder of the
+installation process:
 
-Open <http://localhost:6543> in a browser.
+    cd potemkin
 
-To launch a Python shell in a Python environment with Potemkin and its
-dependencies installed:
+### Start the development server
 
-```ShellSession
-$ make shell
-```
+    make dev
+
+The first time you run `make dev` it might take a while to start because it'll
+need to install the application dependencies and build the assets.
+
+This will start the server on port 6543 (http://localhost:6543), reload the
+application whenever changes are made to the source code, and restart it should
+it crash for some reason.
+
+**That's it!** You’ve finished setting up your Potemkin development
+environment. Run `make help` to see all the commands that're available.
